@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-class Login extends Component {
+class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,17 +12,14 @@ class Login extends Component {
 
   handleEmailChange = event => {
     this.setState({ email: event.target.value });
-    console.log(this.state.email);
   };
 
   handlePasswordChange = event => {
     this.setState({ password: event.target.value });
-    console.log(this.state.password);
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
 
     const obj = {
       email: this.state.email,
@@ -30,11 +27,12 @@ class Login extends Component {
     };
 
     axios
-      .post("/auth/login", obj, {
+      .post("/auth/signup", obj, {
         withCredentials: true
       })
       .then(res => {
         console.log(res);
+        // redirect to user page
       })
       .catch(error => {
         console.log(error);
@@ -48,8 +46,8 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="Login">
-        <h2>Log In</h2>
+      <div className="Signup">
+        <h2>Sign Up</h2>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email</label>
@@ -71,11 +69,11 @@ class Login extends Component {
               required
             />
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit">Sign up</button>
         </form>
       </div>
     );
   }
 }
 
-export default Login;
+export default Signup;

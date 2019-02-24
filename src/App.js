@@ -5,6 +5,8 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Landing from "./components/Landing/Landing";
 import Login from "./components/Login/Login";
+import Signup from "./components/Signup/Signup";
+import Profile from "./components/Profile/Profile";
 
 // const SecretRoute = ({ component: Component, ...rest }) => {
 //   <Route {...rest} render={(props) => (
@@ -17,32 +19,6 @@ class App extends Component {
     data: null
   };
 
-  // callBackendAPI = async () => {
-  //   const response = await fetch("/auth/login", {
-  //     method: "post",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify({
-  //       email: "me@me.com",
-  //       password: "password123"
-  //     })
-  //   });
-  //   const body = await response;
-
-  //   if (response.status !== 200) {
-  //     throw Error(body.message);
-  //   }
-
-  //   return body;
-  // };
-
-  // componentDidMount() {
-  //   this.callBackendAPI().then(res => {
-  //     return res.json();
-  //   });
-  // }
-
   render() {
     return (
       <Router>
@@ -50,6 +26,8 @@ class App extends Component {
           <Route path="/" component={Header} />
           <Route path="/" exact component={Landing} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+          <Route path="/user/:id" component={Profile} />
         </div>
       </Router>
     );
